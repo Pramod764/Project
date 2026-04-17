@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanguard | Next-Gen Tech Store</title>
+    <meta name="description" content="Shop the future of technology at Vanguard. Premium gadgets, sleek design, unmatched performance.">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav id="navbar">
+        <div class="logo" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" style="cursor: pointer;">VANGUARD</div>
+        <ul class="nav-links">
+            <li><a href="#products-section">Products</a></li>
+            <li><a href="#innovation">Innovation</a></li>
+            <li><a href="#support">Support</a></li>
+        </ul>
+        <div class="auth-btns">
+            <button class="btn btn-outline" onclick="openModal('cartModal')">Cart <span id="cart-count">0</span></button>
+            <div id="user-info" style="display: none; align-items: center; gap: 10px;">
+                <span id="display-name" style="color: var(--primary); font-weight: 600;"></span>
+                <button class="btn btn-outline" onclick="logout()">Logout</button>
+            </div>
+            <div id="guest-btns">
+                <button class="btn btn-outline" onclick="openModal('loginModal')">Login</button>
+                <button class="btn btn-primary" onclick="openModal('signupModal')">Join Now</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <h1>Engineering the <br><span style="color: var(--primary);">Tomorrow, Today.</span></h1>
+        <p>Experience the nexus of design and performance. Our curated collection of high-fidelity gadgets is designed to elevate your digital existence.</p>
+        <div style="display: flex; gap: 1rem; justify-content: center;">
+            <button id="hero-browse" class="btn btn-primary" style="padding: 1rem 2.5rem; font-size: 1.1rem;">Browse Collection</button>
+            <button id="hero-promo" class="btn btn-outline" style="padding: 1rem 2.5rem; font-size: 1.1rem;">Watch Promo</button>
+        </div>
+    </header>
+
+    <!-- Products Section -->
+    <section class="container" id="products-section">
+        <h2 class="section-title">Featured Innovations</h2>
+        <div class="products-grid" id="products-container">
+            <!-- Products will be loaded here via JS -->
+            <div style="color: var(--text-muted);">Loading products...</div>
+        </div>
+    </section>
+
+    <!-- Innovation Section -->
+    <section class="container" id="innovation" style="margin-top: 8rem;">
+        <h2 class="section-title">Beyond Engineering</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+            <div class="glass" style="padding: 2rem; border-radius: 20px;">
+                <h3 style="color: var(--primary); margin-bottom: 1rem;">Neural Integration</h3>
+                <p style="color: var(--text-muted); line-height: 1.6;">Our devices are built with the future in mind. Every Vanguard product features seamless neural-sync capabilities, allowing you to control your tech with just a thought.</p>
+            </div>
+            <div class="glass" style="padding: 2rem; border-radius: 20px;">
+                <h3 style="color: var(--secondary); margin-bottom: 1rem;">Sustainable Power</h3>
+                <p style="color: var(--text-muted); line-height: 1.6;">Vanguard utilizes ambient energy harvesting, meaning your devices stay charged using the light and motion around you. No cables, no limits.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Section -->
+    <footer class="container" id="support" style="margin-top: 8rem; padding-bottom: 4rem; border-top: 1px solid var(--glass-border); padding-top: 4rem;">
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;">
+            <div>
+                <div class="logo" style="margin-bottom: 1.5rem;">VANGUARD</div>
+                <p style="font-size: 0.9rem; color: var(--text-muted);">Redefining the digital frontier since 2024.</p>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 1.5rem;">Exploration</h4>
+                <ul style="list-style: none; color: var(--text-muted); font-size: 0.9rem; line-height: 2;">
+                    <li><a href="#products-section" style="color: inherit; text-decoration: none;">New Arrivals</a></li>
+                    <li><a href="#innovation" style="color: inherit; text-decoration: none;">Technologies</a></li>
+                    <li><a href="#" style="color: inherit; text-decoration: none;">Prototypes</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 1.5rem;">Assistance</h4>
+                <ul style="list-style: none; color: var(--text-muted); font-size: 0.9rem; line-height: 2;">
+                    <li><a href="#" style="color: inherit; text-decoration: none;">Neural Link Help</a></li>
+                    <li><a href="#" style="color: inherit; text-decoration: none;">Global Shipping</a></li>
+                    <li><a href="#" style="color: inherit; text-decoration: none;">Security Protocols</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 1.5rem;">Newsletter</h4>
+                <div style="display: flex; gap: 0.5rem;">
+                    <input type="email" placeholder="Email Address" style="background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); padding: 0.5rem; border-radius: 4px; color: white; width: 100%;">
+                    <button class="btn btn-primary">Join</button>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 4rem; color: var(--text-muted); font-size: 0.8rem;">
+            &copy; 2026 Vanguard Tech Store. All rights reserved. Built for the future.
+        </div>
+    </footer>
+
+    <!-- Signup Modal -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content glass">
+            <span class="close-modal" onclick="closeModal('signupModal')">&times;</span>
+            <h2 style="margin-bottom: 2rem;">Create Account</h2>
+            <form id="signupForm">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" name="username" required placeholder="futurist_user">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" required placeholder="you@example.com">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" name="password" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Initialize Account</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content glass">
+            <span class="close-modal" onclick="closeModal('loginModal')">&times;</span>
+            <h2 style="margin-bottom: 2rem;">Welcome Back</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Authorize</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content glass">
+            <span class="close-modal" onclick="closeModal('cartModal')">&times;</span>
+            <h2 style="margin-bottom: 2rem;">Your Cart</h2>
+            <div id="cart-items" style="margin-bottom: 2rem; max-height: 300px; overflow-y: auto;">
+                <p style="color: var(--text-muted); text-align: center;">Cart is empty.</p>
+            </div>
+            <div id="cart-footer" style="display: none;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 1rem; font-weight: 700;">
+                    <span>Total</span>
+                    <span id="cart-total">$0.00</span>
+                </div>
+                <div class="form-group" style="margin-bottom: 1.5rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--text-muted);">Shipping Address</label>
+                    <input type="text" id="shipping-address" placeholder="123 Future Lane, Tech City" style="width: 100%; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); padding: 0.8rem; border-radius: 8px; color: white;">
+                </div>
+                <button class="btn btn-primary" style="width: 100%;" onclick="window.location.href='checkout.html'">Go to Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notifications Toast -->
+    <div id="toast" class="glass" style="position: fixed; bottom: 2rem; right: 2rem; padding: 1rem 2rem; border-color: var(--primary); display: none; z-index: 2000; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+        Item added to cart! 🚀
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
